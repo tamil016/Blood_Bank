@@ -3,12 +3,12 @@ let userSchema= new mongoose.Schema({
     role :{
         type : String,
         required : [true, 'Role is required *'],
-        enum : ['user', 'admin', 'organaization', 'hospital']
+        enum : ['donar', 'admin', 'organaization', 'hospital']
     },
     name : {
         type : String,
         required : function (){
-            if(this.role == 'user' || this.role == 'admin') return true
+            if(this.role == 'donar' || this.role == 'admin') return true
             else return false
         }
     },
@@ -19,7 +19,11 @@ let userSchema= new mongoose.Schema({
     },
     password : {
         type : String,
-        require : [true, 'Password is required *']
+        required : [true, 'Password is required *']
+    },
+    favfood : {
+        type : String,
+        required : [true, 'favfood is required *']
     },
     phone : {
         type : Number,

@@ -5,6 +5,7 @@ require('colors')
 const morgan = require('morgan')
 const databaseConnection = require('./config/db')
 const route = require('./routes/auth')
+const inventoryRoute = require('./routes/inventoryRoute')
 
 require('dotenv').config()
 
@@ -14,6 +15,7 @@ app.use(morgan('dev'))
 databaseConnection()
 
 app.use('/auth/v1',route)
+app.use('/inventory/v1', inventoryRoute)
 
 const PORT = process.env.PORT || 5000
 
